@@ -1,2 +1,2 @@
 rootProject.name = "firekit"
-include ':app'
+include ':firekit'

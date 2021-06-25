@@ -30,26 +30,26 @@ open class CollectionManager<T>(protected val classT: Class<T>, override val TAG
         elems.forEach { synchronized(elems){ listener(ObservableEvent.ADD, null, it) } }
     }
 
-    override fun onInternalAdd(elem: T) {
-        val index = insertionIndexOf(elem)
+    override fun onInternalAdd(after: T) {
+        val index = insertionIndexOf(after)
         synchronized(elems) {
-            if (index < elems.size && elems[index].compareTo(elem) == 0) {
-                Log.w(TAG, "InternalAdd: Element $elem already exists, ignoring.")
+            if (index < elems.size && elems[index].compareTo(after) == 0) {
+                Log.w(TAG, "InternalAdd: Element $after already exists, ignoring.")
                 return
             }
-            Log.d(TAG, "Add $elem")
-            this.elems.add(index, elem)
-            onAdd(elem)
+            Log.d(TAG, "Add $after")
+            this.elems.add(index, after)
+            onAdd(after)
         }
     }
 
-    override fun onInternalRemove(elem: T){
+    override fun onInternalRemove(before: T){
         synchronized(elems){
-            val index = insertionIndexOf(elem)
-            if (index < elems.size && elems[index].compareTo(elem) == 0) {
-                Log.d(TAG, "Remove $elem")
+            val index = insertionIndexOf(before)
+            if (index < elems.size && elems[index].compareTo(before) == 0) {
+                Log.d(TAG, "Remove $before")
                 elems.removeAt(index)
-                onRemove(elem)
+                onRemove(before)
             }
         }
     }

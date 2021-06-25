@@ -4,10 +4,10 @@
 package com.pintraveler.firekit
 
 import android.util.Log
-import com.pintraveler.ptkit.Observable
+import com.pintraveler.firekit.Observable
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.pintraveler.ptkit.EmptyFieldException
+import com.pintraveler.firekit.EmptyFieldException
 
 enum class AuthState { AUTHENTICATED, UNAUTHENTICATED, UNINITIALIZED }
 
